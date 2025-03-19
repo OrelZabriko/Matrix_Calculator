@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 
 
 //-----class section-----
@@ -18,6 +19,7 @@ public:
 
 	//functions
 	void calculate();
+	void displayMenu();
 	void exitProgram();
 
 

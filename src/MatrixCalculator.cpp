@@ -11,8 +11,21 @@ void MatrixCalculator::calculate()
 	while (!exitProg)
 	{
 		std::vector<Matrix> matrices;
+		displayMenu();
 		
 	}	
+}
+
+
+//-----------------------------------------------------------------------------
+void MatrixCalculator::displayMenu()
+{
+	std::cout << "List of available matrix operations: " << std::endl;
+
+	for (int function = 0; function < 5; function++)
+	{
+		std::cout << function + 1 << ". " << functions[function] << std::endl;		
+	}
 }
 
 
