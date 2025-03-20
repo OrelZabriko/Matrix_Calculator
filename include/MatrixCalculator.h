@@ -2,6 +2,7 @@
 
 //-----include section-----
 #include "Matrix.h"
+#include "Operations.h"
 
 #include <iostream>
 #include <vector>

@@ -8,6 +8,8 @@
 //the calculations of the program (of the matrices).
 void MatrixCalculator::calculate()
 {
+	std::vector<std::shared_ptr<Operations>> functions;
+
 	while (!exitProg)
 	{
 		std::vector<Matrix> matrices;

@@ -9,7 +9,7 @@
 class Operations
 {
 public:
-	//veirtual function
+	//virtual function
 	virtual ~Operations() = default;
 
 
