@@ -4,29 +4,46 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
+//In the constructor we want to put in the vector of the functions immediately 
+//the 2 functions 'id' and 'transpose' as defined in the exercise 
+MatrixCalculator::MatrixCalculator()
+{
+	m_functions.push_back(std::make_shared<Id>(ID_FUNC_NAME));
+	m_functions.push_back(std::make_shared<Transpose>(TRANSPOSE_FUNC_NAME));
+}
+
+
+//-----------------------------------------------------------------------------
 //This function is the main function of the program. It responsible for all 
 //the calculations of the program (of the matrices).
 void MatrixCalculator::calculate()
 {
-	std::vector<std::shared_ptr<Operations>> functions;
+	std::string command; //this string hold the command that the user enter.
 
 	while (!exitProg)
 	{
-		std::vector<Matrix> matrices;
-		displayMenu();
-		
+		std::vector<Matrix> matrices; //this vector hold all the matrices 
+									 //that the user creating.
+		displayMenu(m_functions);
+
+		std::cout << "Enter command ('help' for the lestof avaible commands): ";
+		std::cin >> command;
+		std::cout << std::endl;
+
+
 	}	
 }
 
 
 //-----------------------------------------------------------------------------
-void MatrixCalculator::displayMenu()
+void MatrixCalculator::displayMenu(std::vector<std::shared_ptr<Operations>> functions)
 {
 	std::cout << "List of available matrix operations: " << std::endl;
 
-	for (int function = 0; function < 5; function++)
+	for (int function = 0; function < functions.size(); function++)
 	{
-		std::cout << function + 1 << ". " << functions[function] << std::endl;		
+		std::cout << function << ". " << 
+			functions[function]->getFunctionName() << std::endl;		
 	}
 }
 

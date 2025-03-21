@@ -8,7 +8,7 @@
 class Sub : public Operations
 {
 public:
-
+	using Operations::Operations;
 
 private:
 };

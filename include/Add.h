@@ -8,7 +8,7 @@
 class Add : public Operations
 {
 public:
-
+	using Operations::Operations;
 
 private:
 };

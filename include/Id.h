@@ -8,7 +8,7 @@
 class Id : public Operations
 {
 public:
-
+	using Operations::Operations;
 
 private:
 };

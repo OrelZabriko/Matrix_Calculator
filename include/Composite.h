@@ -8,7 +8,7 @@
 class Composite : public Operations
 {
 public:
-
+	using Operations::Operations;
 
 private:
 };

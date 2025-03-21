@@ -1,14 +1,18 @@
 #pragma once
 
 //-----include section-----
-#include "Operations.h"
 
 
 //-----class section-----
-class Transpose : public Operations
+class Add
 {
 public:
-	using Operations::Operations;
+	//constructor
+	Add() = default;
+	//destructor
+	~Add() = default;
+
+	//functions
 
 private:
 };

@@ -8,7 +8,7 @@
 class Evaluate : public Operations
 {
 public:
-
+	using Operations::Operations;
 
 private:
 };
