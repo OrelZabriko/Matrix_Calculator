@@ -4,3 +4,21 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
+const std::string Operations::getFunctionName() const
+{
+	return funcName;
+}
+
+
+//-----------------------------------------------------------------------------
+void Operations::setFuncName(std::string name)
+{
+	funcName = name;
+}
+
+
+//-----------------------------------------------------------------------------
+void Operations::printFuncName() const
+{
+	std::cout << funcName << std::endl;
+}
