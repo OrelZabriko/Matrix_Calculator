@@ -4,13 +4,13 @@
 
 
 //-----class section-----
-class Add
+class Help
 {
 public:
 	//constructor
-	Add() = default;
+	Help() = default;
 	//destructor
-	~Add() = default;
+	~Help() = default;
 
 	//functions
 
