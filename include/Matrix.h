@@ -9,7 +9,11 @@
 class Matrix
 {
 public:
+	//destructor
+	~Matrix() = default;
 
+
+	void printMatrix();
 
 private:
 	std::vector<std::vector<int>> m_matrix;

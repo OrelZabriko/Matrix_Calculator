@@ -24,6 +24,9 @@ void MatrixCalculator::calculate()
 	{
 		std::vector<Matrix> matrices; //this vector hold all the matrices 
 									 //that the user creating.
+		Matrix result; //this hold the matrix of the result of all the 
+					  //calculations.
+
 		displayMenu(m_functions);
 
 		std::cout << "Enter command ('help' for the lestof avaible commands): ";
@@ -49,7 +52,7 @@ void MatrixCalculator::displayMenu(std::vector<std::shared_ptr<Operations>> func
 
 
 //-----------------------------------------------------------------------------
-//This function is responsible for exiting the program.
+//This function is responsible for exiting the program more elegantly.
 void MatrixCalculator::exitProgram()
 {
 	std::cout << "Goodbye!" << std::endl;
