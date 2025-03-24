@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.26)
 
 project (oop2_ex01)
-set (MY_AUTHORS "Orel_Zabriko")
+set (MY_AUTHORS "Orel_Zabriko-Nadav_Ben_Melech")
 
 include (cmake/CompilerSettings.cmake)
 
