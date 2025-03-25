@@ -29,7 +29,7 @@ void MatrixCalculator::calculate()
 
 		displayMenu(m_functions);
 
-		std::cout << "Enter command ('help' for the lestof avaible commands): ";
+		std::cout << "Enter command ('help' for the list of available commands): ";
 		std::cin >> command;
 		std::cout << std::endl;
 
