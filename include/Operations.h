@@ -23,7 +23,7 @@ public:
 	const std::string getFunctionName() const;
 	void setFuncName(std::string name);
 	void printFuncName() const;
-	//virtual void execute(std::vector<std::vector<int>>& matrices) = 0; //need to make this function in the cpp file of the functions
+	//virtual void calcFunc(std::vector<std::vector<int>>& matrices) = 0; //need to make this function in the cpp file of the functions
 
 private:
 	std::string funcName;
