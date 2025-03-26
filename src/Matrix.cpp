@@ -4,34 +4,61 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-
-
-//-----------------------------------------------------------------------------
-//Get the matrix data.
-const std::vector<std::vector<int>>& Matrix::getMatrix() const
+Matrix::Matrix(const int size) : m_size(size)
 {
-	return m_matrix;
+	if (size != 0)
+	{
+		m_matrix.resize(size);
+		for (int rows = 0; rows < size; rows++)
+		{
+			m_matrix[rows].resize(size);
+		}
+	}
 }
 
 
 //-----------------------------------------------------------------------------
-//Set the matrix data.
-void Matrix::setMatrix(const std::vector<std::vector<int>>& matrix)
+const int Matrix::getSize() const
 {
-	m_matrix = matrix;
+	return m_size;
+}
+
+
+//-----------------------------------------------------------------------------
+//This function set the matrix cell with the number it recieve. 
+void Matrix::setCell(const int row, const int col, const int number)
+{
+	m_matrix[row][col] = number;
+}
+
+
+//-----------------------------------------------------------------------------
+//This function return the value of the matrix cell. 
+const int Matrix::getCell(const int row, const int col) const
+{
+	return m_matrix[row][col];
+}
+
+
+//-----------------------------------------------------------------------------
+Matrix& Matrix::operator=(const Matrix& other)
+{
+	m_matrix = other.m_matrix;
+	m_size = other.m_size;
+
+	return *this;
 }
 
 
 //-----------------------------------------------------------------------------
 std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
 {
-	for (const auto& row : matrix.getMatrix())
+	for (int rows = 0; rows < matrix.getSize(); rows++)
 	{
-		for (const auto& element : row)
+		for (int cols = 0; cols < matrix.getSize(); cols++)
 		{
-			os << element << " ";
+			os << matrix.getCell(rows, cols);
 		}
-		os << std::endl;
 	}
 
 	return os;
@@ -41,74 +68,84 @@ std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
 //-----------------------------------------------------------------------------
 std::istream& operator>>(std::istream& is, Matrix& matrix)
 {
-	// TODO: insert return statement here
+	for (int rows = 0; rows < matrix.getSize(); rows++)
+	{
+		for (int cols = 0; cols < matrix.getSize(); cols++)
+		{
+			int tempNum;
+			is >> tempNum;
+			matrix.setCell(rows, cols, tempNum);
+		}
+	}
+
+	return is;
 }
 
 
 //-----------------------------------------------------------------------------
 Matrix operator+(const Matrix& left, const Matrix& right)
 {
-	Matrix result;
-	std::vector<std::vector<int>> tempMatrix;
+	Matrix result = Matrix(left.getSize());
 
-	for (int row = 0; row < left.getMatrix().size(); row++)
+	for (int row = 0; row < left.getSize(); row++)
 	{
-		std::vector<int> tempRow;
 		for (int col = 0; col < left.getMatrix()[row].size(); col++)
 		{
-			tempRow.push_back(left.getMatrix()[row][col] + right.getMatrix()[row][col]);
+			result.setCell(row, col, left.getCell(row, col) + right.getCell(row, col));
 		}
-
-		tempMatrix.push_back(tempRow);
 	}
 
-	result.setMatrix(tempMatrix);
-
 	return result;
+}
+
+
+//-----------------------------------------------------------------------------
+Matrix& operator+=(Matrix& left, const Matrix& right)
+{
+	left = left + right;
+
+	return left;
 }
 
 
 //-----------------------------------------------------------------------------
 Matrix operator-(const Matrix& left, const Matrix& right)
 {
-	Matrix result;
-	std::vector<std::vector<int>> tempMatrix;
+	Matrix result = Matrix(left.getSize());
 
-	for (int row = 0; row < left.getMatrix().size(); row++)
+	for (int row = 0; row < left.getSize(); row++)
 	{
-		std::vector<int> tempRow;
 		for (int col = 0; col < left.getMatrix()[row].size(); col++)
 		{
-			tempRow.push_back(left.getMatrix()[row][col] - right.getMatrix()[row][col]);
+			result.setCell(row, col, left.getCell(row, col) - right.getCell(row, col));
 		}
-
-		tempMatrix.push_back(tempRow);
 	}
-
-	result.setMatrix(tempMatrix);
 
 	return result;
 }
 
 
 //-----------------------------------------------------------------------------
+Matrix& operator-=(Matrix& left, const Matrix& right)
+{
+	left = left - right;
+
+	return left;
+}
+
+
+//-----------------------------------------------------------------------------
 Matrix operator*(const unsigned int mulNum, const Matrix& matrix)
 {
-	Matrix result;
-	std::vector<std::vector<int>> tempMatrix;
+	Matrix result = Matrix(matrix.getSize());
 
-	for (int row = 0; row < matrix.getMatrix().size(); row++)
+	for (int row = 0; row < matrix.getSize(); row++)
 	{
-		std::vector<int> tempRow;
 		for (int col = 0; col < matrix.getMatrix()[row].size(); col++)
 		{
-			tempRow.push_back(matrix.getMatrix()[row][col] - matrix.getMatrix()[row][col]);
+			result.setCell(row, col, mulNum * matrix.getMatrix()[row][col]);
 		}
-
-		tempMatrix.push_back(tempRow);
 	}
-
-	result.setMatrix(tempMatrix);
 
 	return result;
 }
