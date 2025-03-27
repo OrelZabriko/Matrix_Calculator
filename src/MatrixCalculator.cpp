@@ -33,7 +33,6 @@ void MatrixCalculator::calculate()
 		std::cin >> command;
 		std::cout << std::endl;
 
-
 	}	
 }
 

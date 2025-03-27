@@ -57,8 +57,10 @@ std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
 	{
 		for (int cols = 0; cols < matrix.getSize(); cols++)
 		{
-			os << matrix.getCell(rows, cols);
+			os << matrix.getCell(rows, cols) << " ";
 		}
+
+		os << std::endl;
 	}
 
 	return os;
@@ -89,7 +91,7 @@ Matrix operator+(const Matrix& left, const Matrix& right)
 
 	for (int row = 0; row < left.getSize(); row++)
 	{
-		for (int col = 0; col < left.getMatrix()[row].size(); col++)
+		for (int col = 0; col < left.getSize(); col++)
 		{
 			result.setCell(row, col, left.getCell(row, col) + right.getCell(row, col));
 		}
@@ -115,7 +117,7 @@ Matrix operator-(const Matrix& left, const Matrix& right)
 
 	for (int row = 0; row < left.getSize(); row++)
 	{
-		for (int col = 0; col < left.getMatrix()[row].size(); col++)
+		for (int col = 0; col < left.getSize(); col++)
 		{
 			result.setCell(row, col, left.getCell(row, col) - right.getCell(row, col));
 		}
@@ -141,9 +143,9 @@ Matrix operator*(const unsigned int mulNum, const Matrix& matrix)
 
 	for (int row = 0; row < matrix.getSize(); row++)
 	{
-		for (int col = 0; col < matrix.getMatrix()[row].size(); col++)
+		for (int col = 0; col < matrix.getSize(); col++)
 		{
-			result.setCell(row, col, mulNum * matrix.getMatrix()[row][col]);
+			result.setCell(row, col, mulNum * matrix.getCell(row,col));
 		}
 	}
 
