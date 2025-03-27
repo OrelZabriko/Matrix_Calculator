@@ -31,5 +31,9 @@ private:
 
 	//functions
 	void displayMenu(std::vector<std::shared_ptr<Operations>> functions);
+	void printResults(const Matrix result,
+					  const std::vector<Matrix> matrices,
+					  std::string functionName,
+					  const int numOfMatrices);
 	void exitProgram();
 };
