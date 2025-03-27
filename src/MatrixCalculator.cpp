@@ -22,19 +22,83 @@ void MatrixCalculator::calculate()
 
 	while (!exitProg)
 	{
-		std::vector<Matrix> matrices; //this vector hold all the matrices 
+		//std::vector<Matrix> matrices; //this vector hold all the matrices 
 									 //that the user creating.
-		Matrix result; //this hold the matrix of the result of all the 
+		//Matrix result; //this hold the matrix of the result of all the 
 					  //calculations.
 
 		displayMenu(m_functions);
 
-		std::cout << "Enter command ('help' for the list of available commands): ";
+		std::cout << "\nEnter command ('help' for the list of available commands): ";
 		std::cin >> command;
 		std::cout << std::endl;
 
-		
+		commandManager(command);
 	}	
+}
+
+
+//-----------------------------------------------------------------------------
+void MatrixCalculator::commandManager(std::string command)
+{
+	if (command == EVALUATE_FUNC_NAME)
+	{
+		int numOfFunc;
+		std::cin >> numOfFunc;
+
+		int sizeOfMatrix;
+		std::cin >> sizeOfMatrix;
+		std::vector<Matrix> matrices;
+		
+
+		int numOfMatrices = m_functions[numOfFunc]->getNumberOfMatrix();
+		for (int matrixNum = 0; matrixNum < numOfMatrices; matrixNum++)
+		{
+			if (numOfMatrices > 1) 
+				std::cout << "Please enter " << numOfMatrices << " matrices:" << std::endl;
+
+
+			Matrix matrix(sizeOfMatrix);
+
+			std::cout << "Enter a " << sizeOfMatrix << "x" << sizeOfMatrix << " matrix:" << std::endl;	
+			std::cin >> matrix;
+
+			matrices.push_back(matrix);
+		}
+
+		m_functions[numOfFunc]->calcFunc();
+	}
+	else if (command == ADD_FUNC_NAME)
+	{
+		/**/
+	}
+	else if (command == SUB_FUNC_NAME)
+	{
+		/**/ 
+	}
+	else if (command == COMPOSITE_FUNC_NAME)
+	{
+		/**/
+	}
+	else if (command == DELETE_FUNC_NAME)
+	{
+		int numToDelete;
+		std::cin >> numToDelete;
+
+		m_functions.erase(m_functions.begin() + numToDelete);
+	}
+	else if (command == HELP_FUNC_NAME)
+	{
+		//need to implement this function and its class
+	}
+	else if (command == EXIT_FUNC_NAME)
+	{
+		exitProgram();
+	}
+	else
+	{
+		std::cout << "Invalid command. Please try again." << std::endl;
+	}
 }
 
 
@@ -55,6 +119,6 @@ void MatrixCalculator::displayMenu(std::vector<std::shared_ptr<Operations>> func
 //This function is responsible for exiting the program more elegantly.
 void MatrixCalculator::exitProgram()
 {
-	std::cout << "Goodbye!" << std::endl;
+	std::cout << "\nGoodbye!" << std::endl;
 	exitProg = true;
 }

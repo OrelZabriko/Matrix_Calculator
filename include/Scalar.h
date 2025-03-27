@@ -10,5 +10,7 @@ class Scalar : public Operations
 public:
 	using Operations::Operations;
 
+	void calcFunc() {};
+
 private:
 };

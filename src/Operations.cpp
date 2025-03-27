@@ -24,8 +24,3 @@ void Operations::setFuncName(std::string name)
 }
 
 
-//-----------------------------------------------------------------------------
-void Operations::printFuncName() const
-{
-	std::cout << funcName << std::endl;
-}

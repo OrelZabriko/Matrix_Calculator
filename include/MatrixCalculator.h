@@ -22,6 +22,7 @@ public:
 
 	//functions
 	void calculate();
+	void commandManager(std::string command);
 	
 
 private:
