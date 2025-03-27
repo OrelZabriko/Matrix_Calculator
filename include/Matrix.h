@@ -16,6 +16,7 @@ public:
 
 	//functions
 	const int getSize() const;
+	void setSize(const int size);
 	void setCell(const int row, const int col, const int number);
 	const int getCell(const int row, const int col) const;
 

@@ -25,6 +25,19 @@ const int Matrix::getSize() const
 
 
 //-----------------------------------------------------------------------------
+void Matrix::setSize(const int size)
+{
+	m_size = size;
+
+	m_matrix.resize(size);
+	for (int rows = 0; rows < size; rows++)
+	{
+		m_matrix[rows].resize(size);
+	}
+}
+
+
+//-----------------------------------------------------------------------------
 //This function set the matrix cell with the number it recieve. 
 void Matrix::setCell(const int row, const int col, const int number)
 {
@@ -43,6 +56,15 @@ const int Matrix::getCell(const int row, const int col) const
 //-----------------------------------------------------------------------------
 Matrix& Matrix::operator=(const Matrix& other)
 {
+	if (m_matrix.size() == 0)
+	{
+		m_matrix.resize(other.getSize());
+		for (int rows = 0; rows < other.getSize(); rows++)
+		{
+			m_matrix[rows].resize(other.getSize());
+		}
+	}
+
 	m_matrix = other.m_matrix;
 	m_size = other.m_size;
 
