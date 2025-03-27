@@ -2,6 +2,7 @@
 
 //-----include section-----
 #include "Constans.h"
+#include "Matrix.h"
 
 #include <iostream>
 #include <vector>
@@ -23,7 +24,7 @@ public:
 	const std::string getFunctionName() const;
 	void setFuncName(std::string name);
 	virtual const int getNumberOfMatrix() const = 0;
-	virtual void calcFunc() = 0; //need to make this function in the cpp file of the functions
+	virtual void calcFunc(std::vector<Matrix> matrices) = 0;
 
 private:
 	std::string funcName;

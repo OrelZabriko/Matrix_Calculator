@@ -66,7 +66,7 @@ void MatrixCalculator::commandManager(std::string command)
 			matrices.push_back(matrix);
 		}
 
-		m_functions[numOfFunc]->calcFunc();
+		m_functions[numOfFunc]->calcFunc(matrices);
 	}
 	else if (command == ADD_FUNC_NAME)
 	{

@@ -10,7 +10,7 @@ class Scalar : public Operations
 public:
 	using Operations::Operations;
 
-	void calcFunc() {};
+	void calcFunc(std::vector<Matrix> matrices) {};
 
 private:
 };

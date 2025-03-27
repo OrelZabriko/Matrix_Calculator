@@ -4,7 +4,7 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-void Id::calcFunc()
+void Id::calcFunc(std::vector<Matrix> matrices)
 {
 }
 

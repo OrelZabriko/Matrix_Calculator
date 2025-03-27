@@ -11,7 +11,7 @@ public:
 	using Operations::Operations;
 
 	const int getNumberOfMatrix() const;
-	void calcFunc();
+	void calcFunc(std::vector<Matrix> matrices);
 	
 private:
 };
