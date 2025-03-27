@@ -8,6 +8,7 @@
 const std::string ID_FUNC_NAME = "id";
 const std::string TRANSPOSE_FUNC_NAME = "tran";
 const std::string EVALUATE_FUNC_NAME = "eval";
+const std::string SCALAR_FUNC_NAME = "scal";
 const std::string ADD_FUNC_NAME = "add";
 const std::string SUB_FUNC_NAME = "sub";
 const std::string COMPOSITE_FUNC_NAME = "comp";

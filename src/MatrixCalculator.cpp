@@ -65,8 +65,16 @@ void MatrixCalculator::commandManager(std::string command)
 
 			matrices.push_back(matrix);
 		}
+		std::cout << std::endl;
 
-		m_functions[numOfFunc]->calcFunc(matrices);
+		auto result = m_functions[numOfFunc]->calcFunc(matrices);
+	}
+	else if (command == SCALAR_FUNC_NAME)
+	{
+		int val;
+		std::cin >> val;
+
+		m_functions.push_back(std::make_shared<Scalar>(SCALAR_FUNC_NAME + " " + std::to_string(val), val));
 	}
 	else if (command == ADD_FUNC_NAME)
 	{

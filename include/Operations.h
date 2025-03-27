@@ -24,7 +24,7 @@ public:
 	const std::string getFunctionName() const;
 	void setFuncName(std::string name);
 	virtual const int getNumberOfMatrix() const = 0;
-	virtual void calcFunc(std::vector<Matrix> matrices) = 0;
+	virtual Matrix calcFunc(std::vector<Matrix> matrices) = 0;
 
 private:
 	std::string funcName;

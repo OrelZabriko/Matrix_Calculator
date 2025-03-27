@@ -5,7 +5,7 @@
 
 
 //-----class section-----
-class Composite : public Operations
+class Add : public Operations
 {
 public:
 	using Operations::Operations;

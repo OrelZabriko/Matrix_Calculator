@@ -4,8 +4,11 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-void Id::calcFunc(std::vector<Matrix> matrices)
+Matrix Id::calcFunc(std::vector<Matrix> matrices)
 {
+	std::cout << "Id(" << matrices[0] << ") =\n" << matrices[0] << std::endl;
+
+	return matrices[0];
 }
 
 

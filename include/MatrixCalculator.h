@@ -5,6 +5,7 @@
 #include "Operations.h"
 #include "Id.h"
 #include "Transpose.h"
+#include "Scalar.h"
 
 #include <iostream>
 #include <vector>
@@ -24,7 +25,6 @@ public:
 	void calculate();
 	void commandManager(std::string command);
 	
-
 private:
 	bool exitProg = false; //the condition of the main loop
 	std::vector<std::shared_ptr<Operations>> m_functions;
