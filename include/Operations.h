@@ -16,7 +16,11 @@ class Operations
 public:
 	//constructor
 	Operations() = default;
-	Operations(std::string name);
+	Operations(std::string name, const int countFunc = 1);
+	Operations(std::string nameFunc1, std::string nameFunc2,
+			   std::shared_ptr<Operations> function1,
+			   std::shared_ptr<Operations> function2,
+			   std::string sign);
 	//destructor
 	//virtual function to make this polymorphism
 	virtual ~Operations() = default;
@@ -26,7 +30,10 @@ public:
 	void setFuncName(std::string name);
 	virtual const int getNumberOfMatrix() const = 0;
 	virtual Matrix calcFunc(std::vector<Matrix> matrices) = 0;
+	virtual void setCountFunc(const int countFunc);
+	virtual int getCountFunc() const;
 
 private:
 	std::string funcName;
+	int m_countFanc;
 };

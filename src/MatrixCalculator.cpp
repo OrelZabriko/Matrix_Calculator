@@ -78,22 +78,30 @@ void MatrixCalculator::commandManager(std::string command)
 		int func1, func2;
 		std::cin >> func1 >> func2;
 
-		std::string name = m_functions[func1]->getFunctionName() + " + " + m_functions[func2]->getFunctionName();
+		std::string name1 = m_functions[func1]->getFunctionName();
+		std::string name2 = m_functions[func2]->getFunctionName();
 
-		m_functions.push_back(std::make_shared<Add>(name, m_functions[func1], m_functions[func2]));
+		m_functions.push_back(std::make_shared<Add>(name1, name2, m_functions[func1], m_functions[func2]));
 	}
 	else if (command == SUB_FUNC_NAME)
 	{
 		int func1, func2;
 		std::cin >> func1 >> func2;
 
-		std::string name = m_functions[func1]->getFunctionName() + " - " + m_functions[func2]->getFunctionName();
+		std::string name1 = m_functions[func1]->getFunctionName();
+		std::string name2 = m_functions[func2]->getFunctionName();
 
-		m_functions.push_back(std::make_shared<Sub>(name, m_functions[func1], m_functions[func2]));
+		m_functions.push_back(std::make_shared<Sub>(name1, name2, m_functions[func1], m_functions[func2]));
 	}
 	else if (command == COMPOSITE_FUNC_NAME)
 	{
-		/**/
+		int func1, func2;
+		std::cin >> func1 >> func2;
+
+		std::string name1 = m_functions[func1]->getFunctionName();
+		std::string name2 = m_functions[func2]->getFunctionName();
+
+		m_functions.push_back(std::make_shared<Composite>(name1, name2, m_functions[func1], m_functions[func2]));
 	}
 	else if (command == DELETE_FUNC_NAME)
 	{
@@ -125,7 +133,7 @@ void MatrixCalculator::displayMenu(std::vector<std::shared_ptr<Operations>> func
 	for (int function = 0; function < functions.size(); function++)
 	{
 		std::cout << function << ". " << 
-			functions[function]->getFunctionName() << std::endl;		
+			functions[function]->getFunctionName() << std::endl;
 	}
 }
 

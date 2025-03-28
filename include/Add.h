@@ -15,6 +15,9 @@ public:
 	Add(std::string funcName,
 		std::shared_ptr<Operations> function1,
 		std::shared_ptr<Operations> function2);
+	Add(std::string nameFunc1, std::string nameFunc2,
+		std::shared_ptr<Operations> function1,
+		std::shared_ptr<Operations> function2);
 	
 	//functions
 	Matrix calcFunc(std::vector<Matrix> matrices) override;
