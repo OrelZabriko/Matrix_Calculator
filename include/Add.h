@@ -21,6 +21,6 @@ public:
 	const int getNumberOfMatrix() const override;
 
 private:
-	std::shared_ptr<Operations> m_func1;
-	std::shared_ptr<Operations> m_func2;
+	std::shared_ptr<Operations> m_addFunc1;
+	std::shared_ptr<Operations> m_addFunc2;
 };
