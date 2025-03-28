@@ -7,7 +7,7 @@
 Sub::Sub(std::string funcName,
 	std::shared_ptr<Operations> function1,
 	std::shared_ptr<Operations> function2)
-	: Operations(funcName), m_subFunc1(function1), m_subFunc2(function2)
+	: CalculationOperations(funcName), m_subFunc1(function1), m_subFunc2(function2)
 {}
 
 

@@ -7,7 +7,7 @@
 Composite::Composite(std::string funcName,
 					 std::shared_ptr<Operations> function1, 
 					 std::shared_ptr<Operations> function2)
-	: Operations(funcName), m_compFunc1(function1), m_compFunc2(function2)
+	: CalculationOperations(funcName), m_compFunc1(function1), m_compFunc2(function2)
 {}
 
 

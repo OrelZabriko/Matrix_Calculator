@@ -2,14 +2,15 @@
 
 //-----include section-----
 #include "Operations.h"
+#include "CalculationOperations.h"
 
 
 //-----class section-----
-class Composite : public Operations
+class Composite : public CalculationOperations
 {
 public:
 	//constructor
-	using Operations::Operations;
+	using CalculationOperations::CalculationOperations;
 	Composite(std::string funcName,
 			  std::shared_ptr<Operations> function1,
 			  std::shared_ptr<Operations> function2);

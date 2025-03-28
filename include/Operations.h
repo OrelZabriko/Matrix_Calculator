@@ -17,10 +17,6 @@ public:
 	//constructor
 	Operations() = default;
 	Operations(std::string name, const int countFunc = 1);
-	Operations(std::string nameFunc1, std::string nameFunc2,
-			   std::shared_ptr<Operations> function1,
-			   std::shared_ptr<Operations> function2,
-			   std::string sign);
 	//destructor
 	//virtual function to make this polymorphism
 	virtual ~Operations() = default;
