@@ -4,7 +4,8 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-Matrix::Matrix(const int size) : m_size(size)
+Matrix::Matrix(const int size) 
+	: m_size(size)
 {
 	if (size != 0)
 	{

@@ -2,14 +2,15 @@
 
 //-----include section-----
 #include "Operations.h"
+#include "CalculationOperations.h"
 
 
 //-----class section-----
-class Sub : public Operations
+class Sub : public CalculationOperations
 {
 public:
 	//constructor
-	using Operations::Operations;
+	using CalculationOperations::CalculationOperations;
 	Sub(std::string funcName,
 		std::shared_ptr<Operations> function1,
 		std::shared_ptr<Operations> function2);

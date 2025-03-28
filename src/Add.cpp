@@ -7,8 +7,10 @@
 Add::Add(std::string funcName, 
 		 std::shared_ptr<Operations> function1,
 		 std::shared_ptr<Operations> function2)
-	: Operations(funcName), m_addFunc1(function1), m_addFunc2(function2)
-{}
+	: CalculationOperations(funcName), m_addFunc1(function1), m_addFunc2(function2)
+{
+	Operations::setCountFunc(function1->getCountFunc() + function2->getCountFunc());
+}
 
 
 //-----------------------------------------------------------------------------
