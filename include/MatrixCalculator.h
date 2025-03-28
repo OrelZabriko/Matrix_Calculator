@@ -6,6 +6,10 @@
 #include "Id.h"
 #include "Transpose.h"
 #include "Scalar.h"
+#include "Add.h"
+#include "Sub.h"
+#include "Composite.h"
+#include "Help.h"
 
 #include <iostream>
 #include <vector>

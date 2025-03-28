@@ -8,9 +8,11 @@
 class Sub : public Operations
 {
 public:
+	//constructor
 	using Operations::Operations;
-
-	Matrix calcFunc(std::vector<Matrix> matrices) {};
+	
+	//functions
+	Matrix calcFunc(std::vector<Matrix> matrices) override {};
 
 private:
 };

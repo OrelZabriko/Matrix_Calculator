@@ -47,12 +47,12 @@ void MatrixCalculator::commandManager(std::string command)
 		
 
 		int numOfMatrices = m_functions[numOfFunc]->getNumberOfMatrix();
+
+		if (numOfMatrices > 1)
+			std::cout << "Please enter " << numOfMatrices << " matrices:" << std::endl;
+
 		for (int matrixNum = 0; matrixNum < numOfMatrices; matrixNum++)
 		{
-			if (numOfMatrices > 1) 
-				std::cout << "Please enter " << numOfMatrices << " matrices:" << std::endl;
-
-
 			Matrix matrix(sizeOfMatrix);
 
 			std::cout << "Enter a " << sizeOfMatrix << "x" << sizeOfMatrix << " matrix:" << std::endl;	
@@ -75,7 +75,12 @@ void MatrixCalculator::commandManager(std::string command)
 	}
 	else if (command == ADD_FUNC_NAME)
 	{
-		/**/
+		int func1, func2;
+		std::cin >> func1 >> func2;
+
+		std::string name = m_functions[func1]->getFunctionName() + " + " + m_functions[func2]->getFunctionName();
+
+		m_functions.push_back(std::make_shared<Add>(name, m_functions[func1], m_functions[func2]));
 	}
 	else if (command == SUB_FUNC_NAME)
 	{
