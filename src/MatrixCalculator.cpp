@@ -22,11 +22,6 @@ void MatrixCalculator::calculate()
 
 	while (!exitProg)
 	{
-		//std::vector<Matrix> matrices; //this vector hold all the matrices 
-									 //that the user creating.
-		//Matrix result; //this hold the matrix of the result of all the 
-					  //calculations.
-
 		displayMenu(m_functions);
 
 		std::cout << "\nEnter command ('help' for the list of available commands): ";
