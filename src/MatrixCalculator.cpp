@@ -22,11 +22,6 @@ void MatrixCalculator::calculate()
 
 	while (!exitProg)
 	{
-		//std::vector<Matrix> matrices; //this vector hold all the matrices 
-									 //that the user creating.
-		//Matrix result; //this hold the matrix of the result of all the 
-					  //calculations.
-
 		displayMenu(m_functions);
 
 		std::cout << "\nEnter command ('help' for the list of available commands): ";
@@ -67,7 +62,9 @@ void MatrixCalculator::commandManager(std::string command)
 		}
 		std::cout << std::endl;
 
-		auto result = m_functions[numOfFunc]->calcFunc(matrices);
+		Matrix result = m_functions[numOfFunc]->calcFunc(matrices);
+		
+		printResults(result, matrices, m_functions[numOfFunc]->getFunctionName(), numOfMatrices);
 	}
 	else if (command == SCALAR_FUNC_NAME)
 	{
@@ -119,6 +116,29 @@ void MatrixCalculator::displayMenu(std::vector<std::shared_ptr<Operations>> func
 	{
 		std::cout << function << ". " << 
 			functions[function]->getFunctionName() << std::endl;		
+	}
+}
+
+
+//-----------------------------------------------------------------------------
+void MatrixCalculator::printResults(const Matrix result,
+									const std::vector<Matrix> matrices,
+									std::string functionName,
+									const int numOfMatrices)
+{
+	if(functionName == ID_FUNC_NAME || functionName == TRANSPOSE_FUNC_NAME)
+	{
+		std::cout << functionName << " (\n" << matrices[0] 
+				  << ") =\n" << result << std::endl;
+	}
+	else
+	{
+		std::cout << "(" << functionName << ")";
+		for (int matrixNum = 0; matrixNum < numOfMatrices; matrixNum++)
+		{
+			std::cout << "(\n" << matrices[matrixNum] << ")";
+		}
+		std::cout << " =\n" << result << std::endl;
 	}
 }
 
