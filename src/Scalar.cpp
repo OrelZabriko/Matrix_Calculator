@@ -4,7 +4,8 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-Scalar::Scalar(std::string name, const int val) : Operations(name), m_val(val)
+Scalar::Scalar(std::string name, const int val) 
+	: Operations(name), m_val(val)
 {}
 
 

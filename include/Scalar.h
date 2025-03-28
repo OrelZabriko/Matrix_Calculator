@@ -12,7 +12,8 @@ public:
 	using Operations::Operations;
 	Scalar(std::string name, const int val);
 
-	Matrix calcFunc(std::vector<Matrix> matrices);
+	//functions
+	Matrix calcFunc(std::vector<Matrix> matrices) override;
 	const int getNumberOfMatrix() const;
 	void setVal(const int val);
 
