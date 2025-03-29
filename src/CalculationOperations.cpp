@@ -4,6 +4,16 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
+CalculationOperations::CalculationOperations(std::string funcName,
+											 std::shared_ptr<Operations> function1,
+											 std::shared_ptr<Operations> function22)
+	: Operations(funcName), m_Func1(function1), m_Func2(function22)
+{
+	Operations::setCountFunc(function1->getCountFunc() + function22->getCountFunc());
+}
+
+
+//-----------------------------------------------------------------------------
 CalculationOperations::CalculationOperations(std::string nameFunc1,	
 											 std::string nameFunc2,
 											 std::shared_ptr<Operations> function1,

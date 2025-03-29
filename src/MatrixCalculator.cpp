@@ -148,9 +148,9 @@ void MatrixCalculator::displayMenu(std::vector<std::shared_ptr<Operations>> func
 
 //-----------------------------------------------------------------------------
 void MatrixCalculator::printResults(const Matrix result,
-	const std::vector<Matrix> matrices,
-	std::string functionName,
-	const int numOfFunc)
+									const std::vector<Matrix> matrices,
+									std::string functionName,
+									const int numOfFunc)
 {
 	if (functionName == ID_FUNC_NAME || functionName == TRANSPOSE_FUNC_NAME)
 	{
