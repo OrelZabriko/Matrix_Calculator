@@ -4,16 +4,6 @@
 
 //-----functions section------
 //-----------------------------------------------------------------------------
-//Composite::Composite(std::string funcName,
-//					 std::shared_ptr<Operations> function1, 
-//					 std::shared_ptr<Operations> function2)
-//	: CalculationOperations(funcName), m_Func1(function1), m_Func2(function2)
-//{
-//	Operations::setCountFunc(function1->getCountFunc() + function2->getCountFunc());
-//}
-
-
-//-----------------------------------------------------------------------------
 Matrix Composite::calcFunc(std::vector<Matrix> matrices)
 {
 	//First calculate the result of the first function
