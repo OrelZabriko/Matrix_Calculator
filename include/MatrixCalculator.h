@@ -32,6 +32,7 @@ public:
 private:
 	bool exitProg = false; //the condition of the main loop
 	std::vector<std::shared_ptr<Operations>> m_functions;
+	std::vector<int> m_numOfMatrices;
 
 	//functions
 	void displayMenu(std::vector<std::shared_ptr<Operations>> functions);

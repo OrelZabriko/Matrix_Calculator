@@ -9,7 +9,9 @@
 MatrixCalculator::MatrixCalculator()
 {
 	m_functions.push_back(std::make_shared<Id>(ID_FUNC_NAME));
+	m_numOfMatrices.push_back(1);
 	m_functions.push_back(std::make_shared<Transpose>(TRANSPOSE_FUNC_NAME));
+	m_numOfMatrices.push_back(1);
 }
 
 
@@ -29,7 +31,7 @@ void MatrixCalculator::calculate()
 		std::cout << std::endl;
 
 		commandManager(command);
-	}	
+	}
 }
 
 
@@ -44,18 +46,15 @@ void MatrixCalculator::commandManager(std::string command)
 		int sizeOfMatrix;
 		std::cin >> sizeOfMatrix;
 		std::vector<Matrix> matrices;
-		
 
-		int numOfMatrices = m_functions[numOfFunc]->getNumberOfMatrix();
+		if (m_numOfMatrices[numOfFunc] > 1)
+			std::cout << "Please enter " << m_numOfMatrices[numOfFunc] << " matrices:\n" << std::endl;
 
-		if (numOfMatrices > 1)
-			std::cout << "Please enter " << numOfMatrices << " matrices:\n" << std::endl;
-
-		for (int matrixNum = 0; matrixNum < numOfMatrices; matrixNum++)
+		for (int matrixNum = 0; matrixNum < m_numOfMatrices[numOfFunc]; matrixNum++)
 		{
 			Matrix matrix(sizeOfMatrix);
 
-			std::cout << "Enter a " << sizeOfMatrix << "x" << sizeOfMatrix << " matrix:" << std::endl;	
+			std::cout << "Enter a " << sizeOfMatrix << "x" << sizeOfMatrix << " matrix:" << std::endl;
 			std::cin >> matrix;
 
 			matrices.push_back(matrix);
@@ -63,13 +62,15 @@ void MatrixCalculator::commandManager(std::string command)
 		std::cout << std::endl;
 
 		Matrix result = m_functions[numOfFunc]->calcFunc(matrices);
-		
-		printResults(result, matrices, m_functions[numOfFunc]->getFunctionName(), numOfMatrices);
+
+		printResults(result, matrices, m_functions[numOfFunc]->getFunctionName(), numOfFunc);
 	}
 	else if (command == SCALAR_FUNC_NAME)
 	{
 		int val;
 		std::cin >> val;
+
+		m_numOfMatrices.push_back(1);
 
 		m_functions.push_back(std::make_shared<Scalar>(SCALAR_FUNC_NAME + " " + std::to_string(val), val));
 	}
@@ -80,6 +81,8 @@ void MatrixCalculator::commandManager(std::string command)
 
 		std::string name1 = m_functions[func1]->getFunctionName();
 		std::string name2 = m_functions[func2]->getFunctionName();
+		int numOfMatrices = m_functions[func1]->getNumberOfMatrix() + m_functions[func2]->getNumberOfMatrix();
+		m_numOfMatrices.push_back(numOfMatrices);
 
 		m_functions.push_back(std::make_shared<Add>(name1, name2, m_functions[func1], m_functions[func2], "+"));
 	}
@@ -90,6 +93,8 @@ void MatrixCalculator::commandManager(std::string command)
 
 		std::string name1 = m_functions[func1]->getFunctionName();
 		std::string name2 = m_functions[func2]->getFunctionName();
+		int numOfMatrices = m_functions[func1]->getNumberOfMatrix() + m_functions[func2]->getNumberOfMatrix();
+		m_numOfMatrices.push_back(numOfMatrices);
 
 		m_functions.push_back(std::make_shared<Sub>(name1, name2, m_functions[func1], m_functions[func2], "-"));
 	}
@@ -100,6 +105,8 @@ void MatrixCalculator::commandManager(std::string command)
 
 		std::string name1 = m_functions[func1]->getFunctionName();
 		std::string name2 = m_functions[func2]->getFunctionName();
+		int numOfMatrices = m_functions[func1]->getNumberOfMatrix() + m_functions[func2]->getNumberOfMatrix() - 1;
+		m_numOfMatrices.push_back(numOfMatrices);
 
 		m_functions.push_back(std::make_shared<Composite>(name1, name2, m_functions[func1], m_functions[func2], "--->"));
 	}
@@ -109,6 +116,7 @@ void MatrixCalculator::commandManager(std::string command)
 		std::cin >> numToDelete;
 
 		m_functions.erase(m_functions.begin() + numToDelete);
+		m_numOfMatrices.erase(m_numOfMatrices.begin() + numToDelete);
 	}
 	else if (command == HELP_FUNC_NAME)
 	{
@@ -132,7 +140,7 @@ void MatrixCalculator::displayMenu(std::vector<std::shared_ptr<Operations>> func
 
 	for (int function = 0; function < functions.size(); function++)
 	{
-		std::cout << function << ". " << 
+		std::cout << function << ". " <<
 			functions[function]->getFunctionName() << std::endl;
 	}
 }
@@ -140,19 +148,19 @@ void MatrixCalculator::displayMenu(std::vector<std::shared_ptr<Operations>> func
 
 //-----------------------------------------------------------------------------
 void MatrixCalculator::printResults(const Matrix result,
-									const std::vector<Matrix> matrices,
-									std::string functionName,
-									const int numOfMatrices)
+	const std::vector<Matrix> matrices,
+	std::string functionName,
+	const int numOfFunc)
 {
-	if(functionName == ID_FUNC_NAME || functionName == TRANSPOSE_FUNC_NAME)
+	if (functionName == ID_FUNC_NAME || functionName == TRANSPOSE_FUNC_NAME)
 	{
-		std::cout << functionName << " (\n" << matrices[0] 
-				  << ") =\n" << result << std::endl;
+		std::cout << functionName << " (\n" << matrices[0]
+			<< ") =\n" << result << std::endl;
 	}
 	else
 	{
 		std::cout << "(" << functionName << ")";
-		for (int matrixNum = 0; matrixNum < numOfMatrices; matrixNum++)
+		for (int matrixNum = 0; matrixNum < m_numOfMatrices[numOfFunc]; matrixNum++)
 		{
 			std::cout << "(\n" << matrices[matrixNum] << ")";
 		}
@@ -165,6 +173,6 @@ void MatrixCalculator::printResults(const Matrix result,
 //This function is responsible for exiting the program more elegantly.
 void MatrixCalculator::exitProgram()
 {
-	std::cout << "\nGoodbye!" << std::endl;
 	exitProg = true;
+	std::cout << "\nGoodbye!" << std::endl;
 }
