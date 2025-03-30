@@ -15,3 +15,4 @@ const std::string COMPOSITE_FUNC_NAME = "comp";
 const std::string DELETE_FUNC_NAME = "del";
 const std::string HELP_FUNC_NAME = "help";
 const std::string EXIT_FUNC_NAME = "exit";
+const std::string HELP_FILE_NAME = "Help.txt";

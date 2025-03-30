@@ -120,7 +120,7 @@ void MatrixCalculator::commandManager(std::string command)
 	}
 	else if (command == HELP_FUNC_NAME)
 	{
-		//need to implement this function and its class
+		m_help.readHelpFromText();
 	}
 	else if (command == EXIT_FUNC_NAME)
 	{
@@ -128,7 +128,7 @@ void MatrixCalculator::commandManager(std::string command)
 	}
 	else
 	{
-		std::cout << "Invalid command. Please try again." << std::endl;
+		std::cout << "Invalid command. Please try again.\n" << std::endl;
 	}
 }
 
