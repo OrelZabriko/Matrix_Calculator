@@ -1,5 +1,5 @@
 //-----include section-----
-#include "matrixCalculator.h"
+#include "MatrixCalculator.h"
 
 
 //-----main section-----
